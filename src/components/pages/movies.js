@@ -17,6 +17,12 @@ export default class Movies extends Component {
         this.handleGetRating = this.handleGetRating.bind(this);
     }
 
+    // TODO: create function to get the rating
+    // TODO: create function to get create new rating and PUT in the database
+    // TODO: create function to get the count
+    // TODO: create function to add 1 to count and PUT in database
+
+
     handleGetRating(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -24,6 +30,7 @@ export default class Movies extends Component {
     }
 
     componentDidMount() {
+        // TODO: add state to error message to show when getting movies
         axios.get('')
         .then(response => {
             console.log(response)
@@ -32,7 +39,7 @@ export default class Movies extends Component {
             this.setState({
                 data: data
             })
-            if (this.statedata === []) {
+            if (this.state.data.length === 0) {
                 this.setState({
                     message: "There are no movies in your list"
                 })
@@ -89,9 +96,9 @@ export default class Movies extends Component {
         return (
             <div className="movie-list-body-wrapper">
                 <div className="movies-section">
-                            <p id="movie-message">{this.state.message}</p>
-                            <p id="clickable-message">{this.state.clickableMessage}</p>
-                            {this.renderMovies()}
+                        <p id="movie-message">{this.state.message}</p>
+                        <p id="clickable-message">{this.state.clickableMessage}</p>
+                        {this.renderMovies()}
                 </div>
             </div>
         )
