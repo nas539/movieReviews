@@ -12,7 +12,7 @@ export default class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            errorMessage: " Go ahead, login!"
+            message: " Go ahead, login!"
         }
 
         this.handleLoginChange = this.handleLoginChange.bind(this);
@@ -29,10 +29,10 @@ export default class Login extends Component {
         event.preventDefault();
         Cookies.get("username")
         this.setState({
-            errorMessage: "logging in.."
+            message: "logging in.."
         })
         if (this.state.username === "" || this.state.password === "") {
-            this.setState({ errorMessage: "All feilds required!" })
+            this.setState({ message: "All feilds required!" })
         }
         else {
         }
@@ -64,7 +64,7 @@ export default class Login extends Component {
                     </div>
                     <div className="login-section">
                         <button type="submit" onClick={this.handleLoginSubmit}>Login</button>    
-                        <p id="error">{this.state.errorMessage}</p>
+                        <p id="error">{this.state.message}</p>
                     </div>
                 </div>    
             </div>
