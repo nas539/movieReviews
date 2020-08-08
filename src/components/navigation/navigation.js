@@ -1,0 +1,57 @@
+import React, { Component } from 'react';
+import { Route, HashRouter, NavLink } from "react-router-dom";
+import Cookies from 'js-cookie';
+
+import Home from "../pages/home";
+import Movies from "../pages/movies"
+import Login from "../pages/login";
+import MovieEdit from "../pages/editMovie"
+
+
+export default class NavigationMenu extends Component {
+    constructor(props) {
+        super(props);
+
+        Cookies.get("username")
+           
+
+        this.state = {
+            username: "",
+            loggedIn: false
+        }
+
+    }
+
+    render() { 
+        const loggedOutNav =
+            <ul className="navigation-links-wrapper" >
+                <li><NavLink exact to="/">Home</NavLink></li>
+                <li><NavLink to="/movies">Movies</NavLink></li>
+                <li><NavLink to="/login">Login</NavLink></li>
+             </ul>
+
+        const loggedInNav =
+                <ul className="navigation-links-wrapper" >
+                    <li><NavLink exact to="/">Home</NavLink></li>
+                    <li><NavLink to="/movies">Movies</NavLink></li>
+                    <li><NavLink to="/movies/edit">Edit Movies</NavLink></li>
+                    <li><a>Log Out</a></li>
+                </ul>
+
+        return (  
+            <div className="menu-toggle">
+                <HashRouter className="nav" >
+                    <div> 
+                             {!this.state.loggedIn ? loggedOutNav : loggedInNav }
+                        <div className="content"> 
+                            <Route exact path="/" component={Home}/>
+                            <Route path="/login" component={Login}/>
+                            <Route path="/movies" component={Movies}/>
+                            <Route path="/movies/edit" component={MovieEdit}/>  
+                        </div>
+                    </div>
+                </HashRouter>
+            </div>
+        )
+     }
+}
