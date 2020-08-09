@@ -31,7 +31,7 @@ export default class Movies extends Component {
 
     componentDidMount() {
         // TODO: add state to error message to show when getting movies
-        axios.get('')
+        axios.get('http://127.0.0.1:5000/movies/get')
         .then(response => {
             console.log(response)
         })

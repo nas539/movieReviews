@@ -29,7 +29,7 @@ export default class EditMovie extends Component {
         this.setState({
             message: "Updating the movie"
         })
-        axios.put(``)
+        axios.put(`http://127.0.0.1:5000/movie/update/${id}`)
         .then(response => {
             console.log(response);
             this.setState({
@@ -48,7 +48,7 @@ export default class EditMovie extends Component {
         this.setState({
             message: "Deleting movie"
         })
-        axios.delete(``)
+        axios.delete(`http://127.0.0.1:5000/movie/delete/${id}`)
         .then(response => {
             console.log(response);
             this.setState({

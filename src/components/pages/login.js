@@ -36,7 +36,7 @@ export default class Login extends Component {
             this.setState({ message: "All feilds required!" })
         }
         else {
-            axios.get(``)
+            axios.get(`http://127.0.0.1:5000/user/login`)
             .then(response => {
                 console.log(response);
                 this.setState({
