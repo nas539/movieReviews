@@ -42,6 +42,9 @@ export default class Login extends Component {
                 this.setState({
                     message: "logged in!"
                 })
+                Cookies.set("username")
+                Cookies.set("username", this.state.username)
+                window.location.reload();
                 window.location.href='/#/movie/edit'
             })
             .catch(error => {

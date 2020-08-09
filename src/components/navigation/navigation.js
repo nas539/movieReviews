@@ -20,6 +20,32 @@ export default class NavigationMenu extends Component {
             loggedIn: false
         }
 
+        this.logOut = this.logOut.bind(this);
+    }
+
+    componentWillUpdate() {
+        if (Cookies.get("username")) {
+            this.setState({
+                loggedIn: true
+            })
+        }
+    }
+
+    componentWillUpdate() {
+        if (Cookies.get("username")) {
+            this.setState({
+                loggedIn: true
+            })
+        }
+    }
+
+    logOut() {
+        console.log("test")
+        Cookies.remove("username")
+        window.location.href=("/")
+        this.setState({
+            loggedIn: false
+        })
     }
 
     render() { 
@@ -35,14 +61,14 @@ export default class NavigationMenu extends Component {
                     <li><NavLink exact to="/">Home</NavLink></li>
                     <li><NavLink to="/movies">Movies</NavLink></li>
                     <li><NavLink to="/movies/admin">Admin</NavLink></li>
-                    <li><a>Log Out</a></li>
+                    <li><a onClick={this.logOut}>Log Out</a></li>
                 </ul>
 
         return (  
             <div className="menu-toggle">
                 <HashRouter className="nav" >
                     <div> 
-                             {!this.state.loggedIn ? loggedOutNav : loggedInNav }
+                        {!this.state.loggedIn ? loggedOutNav : loggedInNav }
                         <div className="content"> 
                             <Route exact path="/" component={Home}/>
                             <Route path="/login" component={Login}/>
