@@ -16,6 +16,7 @@ export default class EditMovie extends Component {
             director: "",
             plot: "",
             message: "Edit/delete movie",
+            messageMain: "Getting movies",
             data: []
         }
 
@@ -24,12 +25,12 @@ export default class EditMovie extends Component {
         this.handleEditMovieSubmit = this.handleEditMovieSubmit.bind(this);
     }
 
-    handleEditMovieSubmit(event) {
+    handleEditMovieSubmit(movie) {
         event.preventDefault();
         this.setState({
             message: "Updating the movie"
         })
-        axios.put(`http://127.0.0.1:5000/movie/update/${id}`)
+        axios.put(`http://127.0.0.1:5000/movie/update/${movie.id}`)
         .then(response => {
             console.log(response);
             this.setState({
@@ -44,11 +45,11 @@ export default class EditMovie extends Component {
         })
     }
 
-    handleDeleteMovieSubmit() {
+    handleDeleteMovieSubmit(movie) {
         this.setState({
             message: "Deleting movie"
         })
-        axios.delete(`http://127.0.0.1:5000/movie/delete/${id}`)
+        axios.delete(`http://127.0.0.1:5000/movie/delete/${movie.id}`)
         .then(response => {
             console.log(response);
             this.setState({
@@ -70,22 +71,20 @@ export default class EditMovie extends Component {
     }
 
     componentDidMount() {
-        // TODO: add state to error message to show when getting movies
-        axios.get('')
+        axios.get('http://127.0.0.1:5000/movies/get')
         .then(response => {
             console.log(response);
-        })
-        .then(data => {
             this.setState({
-                data: data
+                data: response
             })
-            if (this.state.data.length === 0) {
+            if (this.state.response.length === 0) {
                 this.setState({
                     message: "There are no movies in your list"
                 })
             } else {
                 this.setState({
-                    message: "Movie List"
+                    messageMain: "Movie List",
+                    message: ""
                 })
             }
         })
@@ -170,6 +169,7 @@ export default class EditMovie extends Component {
     render() {
         return (
             <div className="edit-movie-body-wrapper">
+                <p id ="meassge-render-movies">{this.state.messageMain}</p>
                 {this.renderMovies()}     
             </div>
         )

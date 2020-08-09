@@ -33,20 +33,18 @@ export default class Movies extends Component {
         // TODO: add state to error message to show when getting movies
         axios.get('http://127.0.0.1:5000/movies/get')
         .then(response => {
-            console.log(response)
-        })
-        .then(data => {
+            console.log(response);
             this.setState({
-                data: data
+                data: response
             })
-            if (this.state.data.length === 0) {
+            if (this.state.response.length === 0) {
                 this.setState({
                     message: "There are no movies in your list"
                 })
             } else {
                 this.setState({
-                    message: "Movie List",
                     clickableMessage: "Click the movie title to get details",
+                    message: "Movie List"
                 })
             }
         })
