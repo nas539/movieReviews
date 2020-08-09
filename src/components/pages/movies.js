@@ -58,7 +58,7 @@ export default class Movies extends Component {
         })
     }
 
-    renderMoviess() {
+    renderMovies() {
         return (
             <div>
                 {this.state.data.map(item => (

@@ -29,20 +29,17 @@ export default class CreateMovie extends Component {
                 message: "All fields are required"
             })
         } else {
-            axios.get('')
+            axios.post('')
             .then(response => {
                 console.log(response)
-             })
-            .then(data => {
-                console.log(data)
                 this.setState({
                     message: "The movie has been successfully created!"
                 })
-            })
+             })
             .catch(error => {
                 console.log(error)
                 this.setState({
-                    message: "The update has failed."
+                    message: "The creation has failed."
                 })
             })
         }
@@ -53,12 +50,12 @@ export default class CreateMovie extends Component {
                             <div className="modal-create-movie">
                                 <div className="create-section">
                                     <p>
-                                        Name of movie:
+                                        Name of Movie:
                                     </p>
                                     <input
                                         placeholder="Title"
                                         name="title"
-                                        title={this.state.title}
+                                        value={this.state.title}
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
@@ -69,7 +66,7 @@ export default class CreateMovie extends Component {
                                     <input
                                         placeholder="2019"
                                         name="year"
-                                        title={this.state.year}
+                                        value={this.state.year}
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
@@ -80,7 +77,7 @@ export default class CreateMovie extends Component {
                                     <input
                                         placeholder="PG-13"
                                         name="rated"
-                                        title={this.state.rated}
+                                        value={this.state.rated}
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
@@ -89,6 +86,7 @@ export default class CreateMovie extends Component {
                                         Released On:
                                     </p>
                                     <Calendar
+                                        name="releasedOn"
                                         onChange={this.handleInputChange}
                                         value={this.state.releasedOn}
                                     />
@@ -100,7 +98,7 @@ export default class CreateMovie extends Component {
                                     <input
                                         placeholder="Action, Adventure, Comedy, Sci-Fi"
                                         name="genre"
-                                        title={this.state.genre}
+                                        value={this.state.genre}
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
@@ -111,7 +109,7 @@ export default class CreateMovie extends Component {
                                     <input
                                         placeholder="James Gunn"
                                         name="director"
-                                        title={this.state.director}
+                                        value={this.state.director}
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
@@ -122,7 +120,7 @@ export default class CreateMovie extends Component {
                                     <textarea
                                         placeholder="James Gunn, Dan Abnett (based on the Marvel comics by), Andy Lanning (based on the Marvel comics by), Steve Englehart (Star-Lord created by), Steve Gan (Star-Lord created by), Jim Starlin (Gamora and Drax created by), Stan Lee (Groot created by), Larry Lieber (Groot created by), Jack Kirby (Groot created by), Bill Mantlo (Rocket Raccoon created by), Keith Giffen (Rocket Raccoon created by), Steve Gerber (Howard the Duck created by), Val Mayerik (Howard the Duck created by)"
                                         name="plot"
-                                        title={this.state.plot}
+                                        value={this.state.plot}
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
