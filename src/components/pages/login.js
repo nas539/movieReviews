@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
+import axios from 'axios';
 
 export default class Login extends Component {
     constructor(props){
@@ -35,6 +36,20 @@ export default class Login extends Component {
             this.setState({ message: "All feilds required!" })
         }
         else {
+            axios.get(``)
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    message: "logged in!"
+                })
+                window.location.href='/#/movie/edit'
+            })
+            .catch(error => {
+                console.log(error);
+                this.setState({
+                    message: "Login unsuccessful"
+                })
+            })
         }
     }
 
