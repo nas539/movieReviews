@@ -20,7 +20,7 @@ export default class Movies extends Component {
     }
 
    handleSendRating(movie) {
-        axios.post(`http://127.0.0.1//rating/add/${movie.id}`)
+        axios.post(`http://127.0.0.1:8000/MovieDetailView/${movie.id}`)
         .then(response => {
             console.log(response);
             this.setState({
@@ -43,7 +43,7 @@ export default class Movies extends Component {
    
 
     componentDidMount() {
-        axios.get('https://assessment-backend-nas.herokuapp.com/movies/get')
+        axios.get('http://127.0.0.1:8000/MovieListView')
         .then(response => {
             console.log(response);
             this.setState({

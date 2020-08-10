@@ -34,7 +34,7 @@ export default class CreateMovie extends Component {
         } else {
             axios({
                 method: 'post',
-                url: 'http://127.0.0.01:5000/movie/add', 
+                url: 'http://127.0.0.0.1:8000/MovieCreateView', 
                 headers: {
                     "Content-Type":"application/octet-stream",
                     'Access-Control-Allow-Origin': true
