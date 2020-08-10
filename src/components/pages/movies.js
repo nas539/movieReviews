@@ -43,7 +43,7 @@ export default class Movies extends Component {
    
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:5000/movies/get')
+        axios.get('https://assessment-backend-nas.herokuapp.com/movies/get')
         .then(response => {
             console.log(response);
             this.setState({

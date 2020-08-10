@@ -36,7 +36,7 @@ export default class Login extends Component {
             this.setState({ message: "All feilds required!" })
         }
         else {
-            axios.post(`http://127.0.0.1:5000/user/login`)
+            axios.post(`https://assessment-backend-nas.herokuapp.com/user/login`)
             .then(response => {
                 console.log(response);
                 this.setState({

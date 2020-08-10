@@ -30,7 +30,7 @@ export default class EditMovie extends Component {
         this.setState({
             message: "Updating the movie"
         })
-        axios.put(`http://127.0.0.1:5000/movie/update/${movie.id}`)
+        axios.put(`https://assessment-backend-nas.herokuapp.com/movie/update/${movie.id}`)
         .then(response => {
             console.log(response);
             this.setState({
@@ -49,7 +49,7 @@ export default class EditMovie extends Component {
         this.setState({
             message: "Deleting movie"
         })
-        axios.delete(`http://127.0.0.1:5000/movie/delete/${movie.id}`)
+        axios.delete(`https://assessment-backend-nas.herokuapp.com/movie/delete/${movie.id}`)
         .then(response => {
             console.log(response);
             this.setState({
@@ -71,7 +71,7 @@ export default class EditMovie extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:5000/movies/get')
+        axios.get('https://assessment-backend-nas.herokuapp.com/movies/get')
         .then(response => {
             console.log(response);
             this.setState({
