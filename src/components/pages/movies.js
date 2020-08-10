@@ -22,7 +22,7 @@ export default class Movies extends Component {
    handleSendRating(movie) {
         axios.post(`http://127.0.0.1//rating/add/${movie.id}`)
         .then(response => {
-            console.log(repsonse);
+            console.log(response);
             this.setState({
                 ratingMessage: "Rating submited!"
             })

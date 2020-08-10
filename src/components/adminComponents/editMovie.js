@@ -19,7 +19,7 @@ export default class EditMovie extends Component {
             messageMain: "Getting movies",
             data: []
         }
-       
+        
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleDeleteMovieSubmit = this.handleDeleteMovieSubmit.bind(this);
         this.handleEditMovieSubmit = this.handleEditMovieSubmit.bind(this);

@@ -63,7 +63,6 @@ export default class NavigationMenu extends Component {
         const loggedInNav =
                 <ul className="navigation-links-wrapper" >
                     <li><NavLink exact to="/">Home</NavLink></li>
-                    <li><NavLink to="/movies">Movies</NavLink></li>
                     <li><NavLink to="/movies/admin">Admin</NavLink></li>
                     <li><a onClick={this.logOut}>Log Out</a></li>
                 </ul>
