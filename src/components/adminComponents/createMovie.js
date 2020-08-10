@@ -23,17 +23,32 @@ export default class CreateMovie extends Component {
     }
 
     handleCreateMovieSubmit(event) {
+        this.setState({
+            message: "Sending information.."
+        })
         event.preventDefault();
-        if ( title === "" || year === "" || rated === "" || released === "" || genre === "" || director === "" || plot === "") {
+        if (this.state.title === "" || this.state.year === "" || this.state.rated === "" || this.state.released === "" || this.state.genre === "" || this.state.director === "" || this.state.plot === "") {
             this.setState({
                 message: "All fields are required"
             })
         } else {
-            axios.post('http://127.0.0.01:5000/movie/add')
+            // axios.post('http://127.0.0.01:5000/movie/add')
+            
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.01:5000/movie/add', 
+                headers: {
+                    "Content-Type":"application/octet-stream",
+                    'Access-Control-Allow-Origin': true
+                  }, 
+                data: {
+                      "KEY":"VALUE"
+                }
+              })
             .then(response => {
                 console.log(response)
                 this.setState({
-                    message: "The movie has been successfully created!"
+                    message: "The movie has been successfully created!",
                 })
              })
             .catch(error => {
@@ -43,93 +58,6 @@ export default class CreateMovie extends Component {
                 })
             })
         }
-    }
-
-    renderCreateNeMovie() {
-        <Popup classname="popup" modal trigger={<button>Create New Movie</button>} position="center center">
-                            <div className="modal-create-movie">
-                                <div className="create-section">
-                                    <p>
-                                        Name of Movie:
-                                    </p>
-                                    <input
-                                        placeholder="Title"
-                                        name="title"
-                                        value={this.state.title}
-                                        onChange={this.handleInputChange}
-                                    />
-                                </div>
-                                <div className="create-section">
-                                    <p>
-                                        Year:
-                                    </p>
-                                    <input
-                                        placeholder="2019"
-                                        name="year"
-                                        value={this.state.year}
-                                        onChange={this.handleInputChange}
-                                    />
-                                </div>
-                                <div className="create-section">
-                                    <p>
-                                        Rated:
-                                    </p>
-                                    <input
-                                        placeholder="PG-13"
-                                        name="rated"
-                                        value={this.state.rated}
-                                        onChange={this.handleInputChange}
-                                    />
-                                </div>
-                                <div className="create-section">
-                                    <p>
-                                        Released On:
-                                    </p>
-                                    <Calendar
-                                        name="released"
-                                        onChange={this.handleInputChange}
-                                        value={this.state.released}
-                                    />
-                                </div>
-                                <div className="create-section">
-                                    <p>
-                                        Genre:
-                                    </p>
-                                    <input
-                                        placeholder="Action, Adventure, Comedy, Sci-Fi"
-                                        name="genre"
-                                        value={this.state.genre}
-                                        onChange={this.handleInputChange}
-                                    />
-                                </div>
-                                <div className="create-section">
-                                    <p>
-                                        Director:
-                                    </p>
-                                    <input
-                                        placeholder="James Gunn"
-                                        name="director"
-                                        value={this.state.director}
-                                        onChange={this.handleInputChange}
-                                    />
-                                </div>
-                                <div className="create-section">
-                                    <p>
-                                        Plot:
-                                    </p>
-                                    <textarea
-                                        placeholder="James Gunn, Dan Abnett (based on the Marvel comics by), Andy Lanning (based on the Marvel comics by), Steve Englehart (Star-Lord created by), Steve Gan (Star-Lord created by), Jim Starlin (Gamora and Drax created by), Stan Lee (Groot created by), Larry Lieber (Groot created by), Jack Kirby (Groot created by), Bill Mantlo (Rocket Raccoon created by), Keith Giffen (Rocket Raccoon created by), Steve Gerber (Howard the Duck created by), Val Mayerik (Howard the Duck created by)"
-                                        name="plot"
-                                        value={this.state.plot}
-                                        onChange={this.handleInputChange}
-                                    />
-                                </div>
-                                <div className="create-section">
-                                    <p id="create-message">{this.state.message}</p>
-                                    <button type="submit" onClick={this.handleCreateMovieSubmit}>Create Movie</button>
-                                </div>
-                            </div>
-                       </Popup>
     }
 
     handleInputChange(event) {
@@ -180,11 +108,17 @@ export default class CreateMovie extends Component {
                                     <p>
                                         Released On:
                                     </p>
-                                    <Calendar
+                                    <input
+                                        placeholder="2017-05-05"
+                                        name="released"
+                                        value={this.state.released}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    {/* <Calendar
                                         name="released"
                                         onChange={this.handleInputChange}
                                         value={this.state.released}
-                                    />
+                                    /> */}
                                 </div>
                                 <div className="create-section">
                                     <p>
@@ -225,8 +159,6 @@ export default class CreateMovie extends Component {
                                 </div>
                             </div>
                        </Popup>
-                {/* <button type="button" onClick={this.createMovie}>Create Movie</button> 
-                {this.renderCreateNeMovie()}                 */}
             </div>
         )
     }
