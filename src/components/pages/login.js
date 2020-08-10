@@ -7,7 +7,7 @@ export default class Login extends Component {
         super(props);
 
         if (Cookies.get("username")) {
-            window.location.href=("/#/movie/edit")
+            window.location.href=("/#/movies/admin")
           }
 
         this.state = {
@@ -36,7 +36,7 @@ export default class Login extends Component {
             this.setState({ message: "All feilds required!" })
         }
         else {
-            axios.get(`http://127.0.0.1:5000/user/login`)
+            axios.post(`http://127.0.0.1:5000/user/login`)
             .then(response => {
                 console.log(response);
                 this.setState({
@@ -45,7 +45,7 @@ export default class Login extends Component {
                 Cookies.set("username")
                 Cookies.set("username", this.state.username)
                 window.location.reload();
-                window.location.href='/#/movie/edit'
+                window.location.href='/#/movies/admin'
             })
             .catch(error => {
                 console.log(error);

@@ -23,7 +23,7 @@ export default class NavigationMenu extends Component {
         this.logOut = this.logOut.bind(this);
     }
 
-    componentWillUpdate() {
+    UNSAFE_componentWillUpdate() {
         if (Cookies.get("username")) {
             this.setState({
                 loggedIn: true
@@ -31,8 +31,12 @@ export default class NavigationMenu extends Component {
         }
     }
 
-    componentWillUpdate() {
-        if (Cookies.get("username")) {
+    componentWillMount() {
+        if (!Cookies.get("username")) {
+            this.setState({
+                loggedIn: false
+            })
+        } else {
             this.setState({
                 loggedIn: true
             })

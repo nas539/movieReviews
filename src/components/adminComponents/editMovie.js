@@ -11,7 +11,7 @@ export default class EditMovie extends Component {
             title: "",
             year: 2019,
             rated: "",
-            releasedOn: new Date(),
+            released: new Date(),
             genre: "",
             director: "",
             plot: "",
@@ -19,7 +19,7 @@ export default class EditMovie extends Component {
             messageMain: "Getting movies",
             data: []
         }
-
+       
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleDeleteMovieSubmit = this.handleDeleteMovieSubmit.bind(this);
         this.handleEditMovieSubmit = this.handleEditMovieSubmit.bind(this);
@@ -75,9 +75,9 @@ export default class EditMovie extends Component {
         .then(response => {
             console.log(response);
             this.setState({
-                data: response
+                data: response.data
             })
-            if (this.state.response.length === 0) {
+            if (this.state.data.length === 0) {
                 this.setState({
                     message: "There are no movies in your list"
                 })
@@ -95,6 +95,7 @@ export default class EditMovie extends Component {
             })
         })
     }
+     
 
     renderMovies() {
         return (
@@ -141,8 +142,8 @@ export default class EditMovie extends Component {
                                 <input 
                                     className="modal"
                                     placeholder={item.released_on}
-                                    name="releasedOn"
-                                    value={this.state.releasedOn}
+                                    name="released"
+                                    value={this.state.released}
                                     onChange={this.handleInputChange}
                                 />
                                 <textarea 

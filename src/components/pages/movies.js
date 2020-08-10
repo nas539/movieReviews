@@ -28,16 +28,16 @@ export default class Movies extends Component {
             [event.target.name]: event.target.value
         })
     }
+   
 
     componentDidMount() {
-        // TODO: add state to error message to show when getting movies
         axios.get('http://127.0.0.1:5000/movies/get')
         .then(response => {
             console.log(response);
             this.setState({
-                data: response
+                data: response.data
             })
-            if (this.state.response.length === 0) {
+            if (this.state.data.length === 0) {
                 this.setState({
                     message: "There are no movies in your list"
                 })
@@ -85,7 +85,7 @@ export default class Movies extends Component {
                             </div>
                        </Popup>
                     </p>   
-                ))}
+        ))}
             </div>
         ) 
     }
