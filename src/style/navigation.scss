@@ -1,0 +1,47 @@
+.menu-toggle {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    height: 100vh;
+    width: 100vw;
+
+    .navigation-links-wrapper {
+        margin-top: 0px;
+        list-style-type: none;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100vw;
+        background-color: black;
+        height: 13vh;
+
+        a {
+    
+            border: 3px solid transparent;
+            text-decoration: none;
+            font-size: 2em;
+            font-family: 'Oswald', sans-serif;
+            color: white;
+            text-shadow: 0 1px hsl(0,0%,85%),
+                         0 2px hsl(0,0%,80%),
+                         0 3px hsl(0,0%,75%),
+                         0 4px hsl(0,0%,70%),
+                         0 5px hsl(0,0%,65%),
+                         0 6px hsl(0,0%,60%),
+                         0 7px hsl(0,0%,55%),
+                         0 7px 14px black;
+            transition: color 0.3s ease;
+        
+           
+            
+            &:hover {
+                color: slategray;
+               
+            }
+          }   
+    }
+
+
+}

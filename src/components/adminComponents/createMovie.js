@@ -32,8 +32,6 @@ export default class CreateMovie extends Component {
                 message: "All fields are required"
             })
         } else {
-            // axios.post('http://127.0.0.01:5000/movie/add')
-            
             axios({
                 method: 'post',
                 url: 'http://127.0.0.01:5000/movie/add', 
