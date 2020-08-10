@@ -80,7 +80,7 @@ export default class Login extends Component {
                             onChange={this.handleLoginChange}
                         />
                     </div>
-                    <div className="login-section">
+                    <div className="login-btn">
                         <button type="submit" onClick={this.handleLoginSubmit}>Login</button>    
                         <p id="error">{this.state.message}</p>
                     </div>

@@ -106,17 +106,11 @@ export default class CreateMovie extends Component {
                                     <p>
                                         Released On:
                                     </p>
-                                    <input
-                                        placeholder="2017-05-05"
+                                    <Calendar
                                         name="released"
-                                        value={this.state.released}
                                         onChange={this.handleInputChange}
+                                        value={this.state.released}
                                     />
-                                    {/* <Calendar
-                                        name="released"
-                                        onChange={this.handleInputChange}
-                                        value={this.state.released}
-                                    /> */}
                                 </div>
                                 <div className="create-section">
                                     <p>

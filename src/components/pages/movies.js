@@ -4,24 +4,36 @@ import axios from 'axios';
 
 
 export default class Movies extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
             rating: 0,
             message: "",
             clickableMessage: "",
-            data: []
+            data: [],
+            ratingMessage: ""
         }
 
+        this.handleSendRating = this.handleSendRating.bind(this);
         this.handleGetRating = this.handleGetRating.bind(this);
     }
 
-    // TODO: create function to get the rating
-    // TODO: create function to get create new rating and PUT in the database
-    // TODO: create function to get the count
-    // TODO: create function to add 1 to count and PUT in database
-
+   handleSendRating(movie) {
+        axios.post(`http://127.0.0.1//rating/add/${movie.id}`)
+        .then(response => {
+            console.log(repsonse);
+            this.setState({
+                ratingMessage: "Rating submited!"
+            })
+        })
+        .catch(error => {
+            console.log(error);
+            this.setState({
+                ratingMessage: "Unable to submit rating"
+            })
+        })
+   }
 
     handleGetRating(event) {
         this.setState({
@@ -81,6 +93,7 @@ export default class Movies extends Component {
                                         name="rating"
                                         onChange={this.handleGetRating}
                                     />
+                                    <button type="submit" onClick={this.handleSendRating}>Send Rating</button>
                                 </div>
                             </div>
                        </Popup>

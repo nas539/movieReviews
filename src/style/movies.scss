@@ -1,0 +1,22 @@
+.movie-list-body-wrapper {
+    height: 90vh;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkgray;
+    .movies-section {
+        font-size: 1em;
+        font-family: 'Oswald', sans-serif;
+        color: black;
+        text-shadow: 0 1px hsl(0,0%,85%),
+                         0 2px hsl(0,0%,80%),
+                         0 3px hsl(0,0%,75%),
+                         0 4px hsl(0,0%,70%),
+                         0 5px hsl(0,0%,65%),
+                         0 6px hsl(0,0%,60%),
+                         0 7px hsl(0,0%,55%),
+                         0 7px 14px black;
+    }
+}
+            
